@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div class="weather-app" [style.background-image]="'url('+bgPath+')'">
+  <div class="container">
+    <h3 class="brand">Weather</h3>    
+    <div *ngIf="weatherData">
+      <h1 class="temp">{{tempOutput}}&#176;</h1>
+      <div class="city-time">
+        <h1 class="name">{{cityOutput}}</h1>
+        <small>
+          <span class="time">{{timeOutput}}&nbsp;</span>
+          <span class="date">{{dateOutput}}</span>
+        </small>
+      </div>
+      <div class="weather">
+        <img [src]="icon" alt="icon" class="icon">
+        <span class="condition">{{conditionOutput}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <form (ngSubmit)="searchWeather()" id="locationInput">
+      <input type="text" class="search" name ="city" [(ngModel)]="cityInput" placeholder="Search Location..."  required>
+      <button type="submit" class="submit" [style.background-color]="btBg">
+       <i class="fas fa-search"></i>
+      </button>
+    </form>
+    <h4 *ngIf="UniqueList && UniqueList.length > 0">Recent Searches</h4>
+    <h4 *ngIf="UniqueList.length == 0">No Recent Searches</h4>
+    <ul class="cities" *ngIf="UniqueList && UniqueList.length > 0">
+      <li class="city" *ngFor="let data of UniqueList" (click)="cityInput=data;searchWeather()">{{data}}</li>
+    </ul>
+  <h4>Weather Details</h4>
+  <ul class="details">
+    
+    <li>
+      <span>Cloud</span>
+      <span class="cloud">{{cloudOutput}}</span>
+    </li>
+    <li>
+      <span>Humidity</span>
+      <span class="humidity">{{humidityOutput}}</span>
+    </li>
+    <li>
+      <span>Wind:</span>
+      <span class="windy">{{windOutput}}</span>
+    </li>
+  </ul>
+  <button id="fb" (click)="giveFeedback()"><i class="fas fa-comments"></i>&nbsp;Feedback</button>
+  </div>
+</div>

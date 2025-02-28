@@ -1,0 +1,8 @@
+<button *ngIf="username!=''" class="log" (click)="logout()"> 
+  <i class="fas fa-sign-out"></i>
+  <span class="hide">&nbsp;Log Out</span>
+</button>
+<button *ngIf="username==''" class="log" (click)="login()"> 
+  <i class="fas fa-sign-in"></i>
+  <span class="hide">&nbsp;Sign In</span>
+</button>

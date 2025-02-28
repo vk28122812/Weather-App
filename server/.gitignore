@@ -2,4 +2,4 @@
 .env.token
 .env.apiKey
 .env.mongodb_uri
-./node_modules
+node_modules
